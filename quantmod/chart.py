@@ -131,12 +131,12 @@ class Chart(object):
         self.hi = src['hi']
         self.lo = src['lo']
         self.cl = src['cl']
-        self.aop = src['aop']  # Not used currently
-        self.ahi = src['ahi']  # Not used currently
-        self.alo = src['alo']  # Not used currently
-        self.acl = src['acl']
+        # self.aop = src['aop']  # Not used currently
+        # self.ahi = src['ahi']  # Not used currently
+        # self.alo = src['alo']  # Not used currently
+        # self.acl = src['acl']
         self.vo = src['vo']
-        self.di = src['di']  # Not used currently
+        # self.di = src['di']  # Not used currently
 
         self.ind = pd.DataFrame([], index=self.df.index)
         self.pri = collections.OrderedDict()
