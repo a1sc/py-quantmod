@@ -18,6 +18,7 @@ import pandas as pd
 import plotly.plotly as py
 import plotly.offline as pyo
 
+from custom_quantmod_funcs import add_pivots
 from . import tools
 from . import factory
 from .valid import VALID_FIGURE_KWARGS, VALID_TRACES, OHLC_TRACES
@@ -585,7 +586,7 @@ class Chart(object):
             trace['showlegend'] = False
 
             # Colors
-            trace['scatter']['color'] = colors['primary']
+            trace['scatter']['color'] = colors['quaternary']
 
             data.append(trace)
 
@@ -1121,3 +1122,5 @@ Chart.add_STOCHRSI = add_STOCHRSI  # noqa : F405
 Chart.add_TRIX = add_TRIX  # noqa : F405, + Signal, area (HL 0)
 Chart.add_ULTOSC = add_ULTOSC  # noqa : F405, band range color, HL 30, HL 70
 Chart.add_WILLR = add_WILLR  # noqa : F405, band range color, HL 20, HL 80
+
+Chart.add_pivots = add_pivots
