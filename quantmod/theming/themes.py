@@ -20,13 +20,14 @@ LIGHT_QM = dict(
 
     colors = dict(
         increasing = '#00CC00',
-        decreasing = '#FF7700',
+        decreasing = '#ff2200',
         border_increasing = LIGHT_PALETTE['grey25'],
         border_decreasing = LIGHT_PALETTE['grey25'],
         primary = '#252585',
         secondary = '#0044FF',
         tertiary = '#FF0000',
-        quaternary = '#00CC00',
+        quaternary = '#54031a',
+
         grey = LIGHT_PALETTE['grey25'],
         grey_light = LIGHT_PALETTE['grey15'],
         grey_strong = LIGHT_PALETTE['grey40'],
