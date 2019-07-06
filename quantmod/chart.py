@@ -34,6 +34,7 @@ class Chart(object):
     plotting of OHLCV data with over 100 technical indicators.
 
     """
+
     def __init__(self, df, src=None,
                  ticker=None, start=None, end=None):
         """Quantmod Chart based on Pandas DataFrame.
@@ -518,6 +519,7 @@ class Chart(object):
         traces = template['traces']
         additions = template['additions']
         layout = template['layout']
+        layout["xaxis"] = {"type": "category"}
 
         # Get data
         data = []
@@ -538,7 +540,7 @@ class Chart(object):
             # Colors
             if type == 'candlestick':
                 trace['increasing']['fillcolor'] = colors['increasing']
-                trace['increasing']['line']['color'] = colors['border_increasing']   # noqa: E501
+                trace['increasing']['line']['color'] = colors['border_increasing']  # noqa: E501
                 trace['decreasing']['fillcolor'] = colors['decreasing']
                 trace['decreasing']['line']['color'] = colors['border_decreasing']  # noqa: E501
 
@@ -632,17 +634,17 @@ class Chart(object):
             # Determine if volume should be in 2 colors or in 1
             if type in OHLC_TRACES and self.has_open and self.has_close:
                 volume_color = [
-                    colors['increasing']
-                    if (value - self.df[self.op].values[i]) >= 0
-                    else colors['decreasing']
-                    for i, value in enumerate(self.df[self.cl].values)
-                ]
+                        colors['increasing']
+                        if (value - self.df[self.op].values[i]) >= 0
+                        else colors['decreasing']
+                        for i, value in enumerate(self.df[self.cl].values)
+                        ]
                 border_color = [
-                    colors['border_increasing']
-                    if (value - self.df[self.op].values[i]) >= 0
-                    else colors['border_decreasing']
-                    for i, value in enumerate(self.df[self.cl].values)
-                ]
+                        colors['border_increasing']
+                        if (value - self.df[self.op].values[i]) >= 0
+                        else colors['border_decreasing']
+                        for i, value in enumerate(self.df[self.cl].values)
+                        ]
             else:
                 volume_color = colors['primary']
 
@@ -734,6 +736,7 @@ class Chart(object):
 
         # Axis
         layout['xaxis'] = copy.deepcopy(additions['xaxis'])
+        layout['xaxis']['type'] = 'category'
         layout['yaxis'] = copy.deepcopy(additions['yaxis'])
 
         layout['yaxis']['side'] = 'right'
@@ -768,9 +771,9 @@ class Chart(object):
                 gap_height = 0.01 * layout['height']
                 new_height = main_height + n * (gap_height + sub_height)
 
-                main = main_height/new_height
-                sub = sub_height/new_height
-                gap = gap_height/new_height
+                main = main_height / new_height
+                sub = sub_height / new_height
+                gap = gap_height / new_height
 
                 # Main plot
                 upper = 1.0
@@ -810,31 +813,31 @@ class Chart(object):
                 annotations_color = colors['primary']
 
             last_price = dict(
-                x=layout['legend']['x'],
-                xanchor=layout['legend']['xanchor'],
-                xref='paper',
-                y=layout['legend']['y'],
-                yanchor=layout['legend']['yanchor'],
-                yref='paper',
-                showarrow=False,
-                text='Last {0:,.02f}'.format(self.df[self.cl][-1]),
-                font=dict(color=annotations_color),
-            )
+                    x=layout['legend']['x'],
+                    xanchor=layout['legend']['xanchor'],
+                    xref='paper',
+                    y=layout['legend']['y'],
+                    yanchor=layout['legend']['yanchor'],
+                    yref='paper',
+                    showarrow=False,
+                    text='Last {0:,.02f}'.format(self.df[self.cl][-1]),
+                    font=dict(color=annotations_color),
+                    )
             layout['annotations'].append(last_price)
             layout['legend']['y'] -= 0.03
 
             if volume:
                 last_volume = dict(
-                    x=layout['legend']['x'],
-                    xanchor=layout['legend']['xanchor'],
-                    xref='paper',
-                    y=layout['yaxis2']['domain'][-1] - 0.01,
-                    yanchor=layout['legend']['yanchor'],
-                    yref='paper',
-                    showarrow=False,
-                    text='Volume {0:,}'.format(self.df[self.vo][-1]),
-                    font=dict(color=annotations_color),
-                )
+                        x=layout['legend']['x'],
+                        xanchor=layout['legend']['xanchor'],
+                        xref='paper',
+                        y=layout['yaxis2']['domain'][-1] - 0.01,
+                        yanchor=layout['legend']['yanchor'],
+                        yref='paper',
+                        showarrow=False,
+                        text='Volume {0:,}'.format(self.df[self.vo][-1]),
+                        font=dict(color=annotations_color),
+                        )
                 layout['annotations'].append(last_volume)
 
         figure = dict(data=data, layout=layout)
@@ -1090,7 +1093,6 @@ Chart.add_HT_TRENDLINE = add_HT_TRENDLINE  # noqa : F405, add_ht_trendline
 Chart.add_MIDPOINT = add_MIDPOINT  # noqa : F405, add_midpoint
 Chart.add_SAR = add_SAR  # noqa : F405
 Chart.add_SAREXT = add_SAREXT  # noqa : F405
-
 
 Chart.add_APO = add_APO  # noqa : F405, HL 0 (MACD no signal line)
 Chart.add_AROON = add_AROON  # noqa : F405,
