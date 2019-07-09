@@ -18,7 +18,7 @@ import pandas as pd
 import plotly.plotly as py
 import plotly.offline as pyo
 
-from custom_quantmod_funcs import add_pivots
+from custom_quantmod_funcs import add_pivots, add_levels
 from . import tools
 from . import factory
 from .valid import VALID_FIGURE_KWARGS, VALID_TRACES, OHLC_TRACES
@@ -1126,3 +1126,4 @@ Chart.add_ULTOSC = add_ULTOSC  # noqa : F405, band range color, HL 30, HL 70
 Chart.add_WILLR = add_WILLR  # noqa : F405, band range color, HL 20, HL 80
 
 Chart.add_pivots = add_pivots
+Chart.add_levels = add_levels
