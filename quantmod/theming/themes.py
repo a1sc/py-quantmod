@@ -33,7 +33,8 @@ LIGHT_QM = dict(
         grey_strong = LIGHT_PALETTE['grey40'],
         fill = LIGHT_PALETTE['grey05'],
         fill_light = LIGHT_PALETTE['grey02'],
-        fill_strong = LIGHT_PALETTE['grey10'],
+        # fill_strong = LIGHT_PALETTE['grey10'],
+        fill_strong = LIGHT_PALETTE["orange"]
     ),
 
     traces = dict(
