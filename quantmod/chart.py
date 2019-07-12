@@ -12,17 +12,17 @@ from __future__ import absolute_import
 
 import collections
 import copy
-import six
 import datetime as dt
-import pandas as pd
-import plotly.plotly as py
+
 import plotly.offline as pyo
+import plotly.plotly as py
+import six
 
 from custom_quantmod_funcs import add_pivots, add_levels
-from . import tools
 from . import factory
-from .valid import VALID_FIGURE_KWARGS, VALID_TRACES, OHLC_TRACES
+from . import tools
 from .ta import *  # noqa : F405
+from .valid import VALID_FIGURE_KWARGS, VALID_TRACES, OHLC_TRACES
 
 
 class Chart(object):
@@ -606,7 +606,7 @@ class Chart(object):
 
             # Colors
             if 'line' in primary['type']:
-                trace['line']['color'] = colors[primary['color']]
+                 trace['line']['color'] = colors[primary['color']]
             elif 'area' in primary['type']:
                 trace['line']['color'] = colors[primary['color']]
                 if 'fillcolor' in primary:
