@@ -18,7 +18,7 @@ import plotly.offline as pyo
 import plotly.plotly as py
 import six
 
-from custom_quantmod_funcs import add_pivots, add_levels
+from custom_quantmod_funcs import add_levels
 from . import factory
 from . import tools
 from .ta import *  # noqa : F405
@@ -1125,5 +1125,4 @@ Chart.add_TRIX = add_TRIX  # noqa : F405, + Signal, area (HL 0)
 Chart.add_ULTOSC = add_ULTOSC  # noqa : F405, band range color, HL 30, HL 70
 Chart.add_WILLR = add_WILLR  # noqa : F405, band range color, HL 20, HL 80
 
-Chart.add_pivots = add_pivots
 Chart.add_levels = add_levels
